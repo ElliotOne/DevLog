@@ -26,7 +26,7 @@
     <div class="form-group">
         <label asp-for="Status"></label>
         <select asp-for="Status"
-                asp-items="Html.GetEnumSelectList<PostCommentStatus>()" class="custom-select"></select>
+                asp-items="Html.GetEnumSelectList<PostCommentStatus>()" class="form-select"></select>
         <span asp-validation-for="Status"></span>
     </div>
 
