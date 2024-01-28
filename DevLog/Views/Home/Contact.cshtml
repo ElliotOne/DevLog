@@ -1,0 +1,101 @@
+﻿@model DevLog.Models.ViewModels.ContactFormViewModel
+
+@{
+    ViewData["Title"] = "Contact Me";
+}
+
+@section Scripts
+{
+    <script>
+        function contactFormSent(xhr) {
+            Website.JsonResultHandler(xhr.responseJSON);
+
+            $("#UserFullName").val("");
+            $("#EmailOrPhoneNumber").val("");
+            $("#Subject").val("");
+            $("#Body").val("");
+        }
+    </script>
+}
+
+@await Html.PartialAsync("PartialViews/_BreadcrumbPV")
+
+<section id="contact-me-area" class="area-mt">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-12 col-12">
+                <div class="col-12 area-title">
+                    <p>@ViewData["Title"]</p>
+                </div>
+                <div data-aos="zoom-in-up">
+                    <p class="text-effect text-justify">
+                        Through the feedback form below, you can share your opinions and suggestions. Your valuable feedback plays a crucial role in improving the website, shaping future plans, and enhancing the overall experience. Thank you in advance for your insights.
+
+                        <br /><br />
+
+                        Additionally, you can reach out to me via phone, email, or other communication channels to discuss your project requirements. Your projects are important, and I'm here to assist you.
+
+                        <br />
+                        You can find samples of my work on my <a href="https://github.com/ElliotOne" class="text-danger">GitHub</a> page.
+
+
+                    </p>
+
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-12 col-12">
+                <img src="~/images/svg/contact.svg" alt="" class="img-fluid">
+            </div>
+        </div>
+        <div class="row" id="contact-me-form">
+            <div class="col-12 area-title">
+                <p>@ViewData["Title"]</p>
+            </div>
+            <div class="col-8 col-md-10 col-sm-12 col-12 m-auto">
+
+                <form method="post" asp-action="Contact"
+                      data-ajax="true" data-ajax-method="post" data-ajax-update="#alert-box" data-ajax-loading="#spinner" data-ajax-complete="contactFormSent">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-12 col-sm-12 col-12 mb-3" data-aos="zoom-in-up">
+                            <div class="form-group">
+                                <input type="text" asp-for="UserFullName" class="form-control" placeholder="@Html.DisplayNameFor(x=>x.UserFullName)">
+                                <span asp-validation-for="UserFullName"></span>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-12 col-sm-12 col-12 mb-3" data-aos="zoom-in-up">
+                            <div class="form-group">
+                                <input type="text" asp-for="EmailOrPhoneNumber" class="form-control" placeholder="@Html.DisplayNameFor(x=>x.EmailOrPhoneNumber)">
+                                <span asp-validation-for="EmailOrPhoneNumber"></span>
+                            </div>
+                        </div>
+                        <div class="col-12 mb-3" data-aos="zoom-in-up">
+                            <div class="form-group">
+                                <input type="text" asp-for="Subject" class="form-control" placeholder="@Html.DisplayNameFor(x=>x.Subject)">
+                                <span asp-validation-for="Subject"></span>
+                            </div>
+                        </div>
+                        <div class="col-12 mb-4" data-aos="zoom-in-up">
+                            <div class="form-group">
+                                <textarea asp-for="Body" cols="30" rows="6" class="form-control" placeholder="@Html.DisplayNameFor(x=>x.Body)"></textarea>
+                                <span asp-validation-for="Body"></span>
+                            </div>
+                        </div>
+                        <div class="col-12" data-aos="zoom-in-up">
+                            <div class="form-group text-center">
+                                <button type="submit" class="btn btn-primary px-5 py-3" data-aos="zoom-in-up">
+                                    <span id="spinner" style="display: none;">
+                                        <i class="fas fa-spinner fa-spin"></i>
+                                    </span>
+                                    Send Message
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+@await Component.InvokeAsync("ContactBar")

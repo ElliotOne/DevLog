@@ -1,0 +1,95 @@
+﻿@model DevLog.Areas.Panel.Models.ViewModels.ProgressBarIndexViewModel
+
+@{
+    ViewData["Title"] = "Progresses";
+}
+
+@section Scripts
+{
+    <script>
+        Panel.InitializeSortDom("progressBars-items", "sortable");
+
+        $(".btn-delete").click(function () {
+            $.ajax({
+                url: "@Url.Action("Delete")",
+                dataType: "json",
+                method: "POST",
+                data: {
+                    id: $(this).attr("data-id")
+                },
+                success: function (data) {
+                    if (data.statusCode !== undefined && data.statusCode === 200) {
+                        window.location = data.redirectUrl;
+                    }
+                }
+            });
+        });
+    </script>
+}
+
+<div class="my-5 title-bar">
+    <h1>@ViewData["Title"]</h1>
+    <a asp-action="Create" class="btn btn-success py-3 px-5 mt-3 ml-2 my-2">
+        <span class="fa fa-plus"></span>
+        Create
+    </a>
+</div>
+
+<form class="form" asp-action="Index">
+
+    <table class="table table-striped table-bordered table-light" width="100%">
+        <thead>
+            <tr>
+                <td>
+                    @Html.DisplayNameFor(x => x.ProgressBarFormViewModels.SingleOrDefault()!.SortIndex)
+                </td>
+                <td>
+                    @Html.DisplayNameFor(x => x.ProgressBarFormViewModels.SingleOrDefault()!.Topic)
+                </td>
+                <td>
+                    @Html.DisplayNameFor(x => x.ProgressBarFormViewModels.SingleOrDefault()!.Percentage)
+                </td>
+                <td></td>
+            </tr>
+        </thead>
+        <tbody id="progressBars-items">
+            @for (int i = 0; i < Model.ProgressBarFormViewModels.Count; i++)
+            {
+                <tr>
+                    <td class="sortable text-center">
+                        <span class="text-center handle">
+                            <span class="fas fa-arrows-alt"></span>
+                        </span>
+
+                        <input type="hidden" class="sort-index" asp-for="ProgressBarFormViewModels[i].SortIndex" />
+                        <input type="hidden" asp-for="ProgressBarFormViewModels[i].Id" />
+                    </td>
+                    <td>
+                        <input asp-for="ProgressBarFormViewModels[i].Topic" class="form-control" />
+                        <span asp-validation-for="ProgressBarFormViewModels[i].Topic"></span>
+                    </td>
+                    <td>
+                        <input asp-for="ProgressBarFormViewModels[i].Percentage" class="form-control" />
+                        <span asp-validation-for="ProgressBarFormViewModels[i].Percentage"></span>
+                    </td>
+                    <td>
+                        <a href="javascript:void(0);" data-id=" @Model.ProgressBarFormViewModels[i].Id" class="btn btn-danger btn-delete" title="Delete">
+                            <i class="fa fa-trash"></i>
+                        </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+
+    </table>
+
+    <div class="row">
+        <div class="col-12">
+            <div class="form-group">
+                <input type="hidden" asp-for="Id" />
+                <button class="btn btn-primary" type="submit">Edit</button>
+            </div>
+        </div>
+    </div>
+
+</form>

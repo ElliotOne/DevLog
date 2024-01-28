@@ -1,0 +1,48 @@
+﻿@model IEnumerable<DevLog.Core.Domain.ProgressBar>
+
+@if (Model.Any())
+{
+    <div class="row area-mt">
+        <div class="col-12 area-title">
+            <p>My Skills</p>
+        </div>
+        <div class="col-12">
+            <div class="row no-gutters" id="progress-area">
+
+                @foreach (var progressBar in Model)
+                {
+                    <div class="col-lg-3 col-md-6 col-sm-12 col-12" data-aos="zoom-in-up">
+                        <div class="progress-card">
+                            <p class="progress-card-title">
+                                @progressBar.Topic
+                            </p>
+                            <div class="progress-card-bar">
+                                <div class="progress">
+                                    @{
+                                        var progressValue = progressBar.Percentage;
+                                        string color = "";
+
+                                        if (progressValue < 30)
+                                        {
+                                            color = "bg-danger";
+                                        }
+                                        else if (progressValue < 80)
+                                        {
+                                            color = "bg-primary";
+                                        }
+                                        else
+                                        {
+                                            color = "bg-success";
+                                        }
+                                    }
+                                    <div class="progress-bar progress-bar-striped progress-bar-animated @color" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: @progressValue%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+
+            </div>
+        </div>
+    </div>
+}

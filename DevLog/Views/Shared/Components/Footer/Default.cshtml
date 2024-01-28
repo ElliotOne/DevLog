@@ -1,0 +1,150 @@
+﻿@using System.Reflection
+@model DevLog.Models.ViewModels.FooterViewModel
+
+<footer id="footer-area" class="area-mt">
+    <div class="container-fluid">
+        <div class="row" id="footer-first-row">
+            <div class="col-lg-3 col-md-6 col-sm-12 col-12" id="footer-links">
+                <div id="footer-links-social">
+                    <p class="footer-section-header">
+                        Follow
+                        <span class="footer-section-header-border">Me</span>
+                    </p>
+                    <ul>
+                        @if (!string.IsNullOrWhiteSpace(Model.Instagram))
+                        {
+                            <li>
+                                <a href="@Model.Instagram"><span class="fab fa-instagram"></span></a>
+                            </li>
+                        }
+
+                        @if (!string.IsNullOrWhiteSpace(Model.Telegram))
+                        {
+                            <li>
+                                <a href="@Model.Telegram"><span class="fab fa-telegram"></span></a>
+                            </li>
+                        }
+
+                        @if (!string.IsNullOrWhiteSpace(Model.GooglePlus))
+                        {
+                            <li>
+                                <a href="@Model.GooglePlus"><span class="fab fa-google-plus"></span></a>
+                            </li>
+                        }
+
+                        @if (!string.IsNullOrWhiteSpace(Model.FaceBook))
+                        {
+                            <li>
+                                <a href="@Model.FaceBook"><span class="fab fa-facebook"></span></a>
+                            </li>
+                        }
+
+                        @if (!string.IsNullOrWhiteSpace(Model.LinkedIn))
+                        {
+                            <li>
+                                <a href="@Model.LinkedIn"><span class="fab fa-linkedin"></span></a>
+                            </li>
+                        }
+
+                        @if (!string.IsNullOrWhiteSpace(Model.Youtube))
+                        {
+                            <li>
+                                <a href="@Model.Youtube"><span class="fab fa-youtube"></span></a>
+                            </li>
+                        }
+
+                        @if (!string.IsNullOrWhiteSpace(Model.Aparat))
+                        {
+                            <li>
+                                <a href="@Model.Aparat"><span class="fa fa-image"></span></a>
+                            </li>
+                        }
+
+                        @if (!string.IsNullOrWhiteSpace(Model.GitHub))
+                        {
+                            <li>
+                                <a href="@Model.GitHub"><span class="fab fa-github"></span></a>
+                            </li>
+                        }
+                    </ul>
+                </div>
+                <div id="footer-links-contact">
+                    <ul class="text-left">
+
+                        @if (!string.IsNullOrWhiteSpace(Model.Phone1))
+                        {
+                            <li>
+                                <span>Phone</span>
+                                <span>:</span>
+                                <span>@Model.Phone1</span>
+                            </li>
+                        }
+
+                        @if (!string.IsNullOrWhiteSpace(Model.Phone2))
+                        {
+                            <li>
+                                <span>Phone</span>
+                                <span>:</span>
+                                <span>@Model.Phone2</span>
+                            </li>
+                        }
+
+                        @if (!string.IsNullOrWhiteSpace(Model.Email1))
+                        {
+                            <li>
+                                <span>Email</span>
+                                <span>:</span>
+                                <span>@Model.Email1</span>
+                            </li>
+                        }
+
+                        @if (!string.IsNullOrWhiteSpace(Model.Email2))
+                        {
+                            <li>
+                                <span>Email</span>
+                                <span>:</span>
+                                <span>@Model.Email2</span>
+                            </li>
+                        }
+
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-12 col-12" id="footer-description">
+                <p class="footer-section-header">
+                    <span class="footer-section-header-border">About Me</span>
+                </p>
+
+                <p class="text-effect text-justify">
+                    I'm a passionate software developer with expertise in web and cloud technologies. This blog is my space for sharing programming insights and advocating for open source contributions.
+                </p>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-12 col-12">
+                <p class="footer-section-header">
+                    <span class="footer-section-header-border">Top</span>
+                    Tags
+                </p>
+                <div id="footer-tags">
+                    @if (Model.PostTags.Any())
+                    {
+                        @foreach (var postTag in Model.PostTags)
+                        {
+                            <a asp-controller="Blog" asp-action="Index" asp-route-postTag="@postTag">@postTag</a>
+                        }
+                    }
+                </div>
+            </div>
+        </div>
+        <div class="row" id="footer-second-row">
+            <div class="col-12">
+                Made with
+                <span class="fa fa-heart"></span>
+                by <a href="https://github.com/ElliotOne" class="text-danger">Elliot One</a>
+                <br />
+                <span>@DateTime.Now.Year</span>
+                <span>|</span>
+                <span>Version @Assembly.GetEntryAssembly()?.GetName().Version</span>
+            </div>
+        </div>
+    </div>
+</footer>

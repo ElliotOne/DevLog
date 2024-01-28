@@ -1,0 +1,74 @@
+﻿@{
+    ViewData["Title"] = "About Me";
+}
+
+@await Html.PartialAsync("PartialViews/_BreadcrumbPV")
+
+<section id="about-me-area">
+    <div class="container-fluid">
+        <div class="row area-mt">
+            <div class="col-lg-6 col-md-12 col-sm-12 col-12 order-lg-1 order-md-2 order-sm-2 order-2">
+                <div class="col-12 area-title">
+                    <p>@ViewData["Title"]</p>
+                </div>
+                <div data-aos="zoom-in-up">
+                    <p class="text-effect text-justify">
+                        Greetings! I'm a dedicated software programmer and developer, specializing in web and cloud technologies.
+                        My coding journey kicked off a few years ago and has been a fascinating adventure since then.
+                        I'm committed to continuous learning, always ready to expand my skills and contribute to various software projects.
+                        While I have a solid foundation in various technologies, I love exploring different aspects of software and systems.
+                    </p>
+                    <br />
+                    <p class="text-effect text-justify">
+                        This blog is my platform for sharing insights and experiences in the world of programming.
+                        It's where I document my projects, thoughts, and the occasional code snippet.
+                    </p>
+                    <br />
+                    <p class="text-effect text-justify">
+                        I'm a strong advocate for open source! Some of my work is available for everyone to benefit from,
+                        contributing in my own small way to the thriving developer community.
+                    </p>
+
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-12 col-sm-12 col-12 order-lg-2 order-md-1 order-sm-1 order-1 text-center">
+                <img src="~/images/me.png" alt="" class="img-fluid p-5 w-50">
+            </div>
+        </div>
+
+        @await Component.InvokeAsync("ProgressBars")
+
+        <div class="row area-mt" id="results-area">
+            <div class="col-lg-6 col-md-12 col-sm-12 col-12">
+                <img src="~/images/svg/certificate.svg" alt="" class="img-fluid">
+            </div>
+            <div class="col-lg-6 col-md-12 col-sm-12 col-12">
+                <div class="col-12 area-title">
+                    <p>Accomplishments</p>
+                </div>
+                <ul id="result-list" data-aos="zoom-in-up">
+                    <li class="text-effect">
+                        <span class="fa fa-check result-ico"></span>
+                        Design and management of a cutting-edge e-commerce and corporate website
+                    </li>
+                    <li class="text-effect">
+                        <span class="fa fa-check result-ico"></span>
+                        Advisor, Author, Podcaster, and Blogger in the realm of programming
+                    </li>
+                    <li class="text-effect">
+                        <span class="fa fa-check result-ico"></span>
+                        Professional programming education and tutoring experience
+                    </li>
+                    <li class="text-effect">
+                        <span class="fa fa-check result-ico"></span>
+                        Collaboration on various projects involving SEO and website optimization
+                    </li>
+                    <li class="text-effect">
+                        <span class="fa fa-check result-ico"></span>
+                        Design and development of an advanced administrative automation and clinic management system
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,23 @@
+﻿@model DevLog.Areas.Panel.Models.ViewModels.PostCategoryFormViewModel
+
+@{
+    Layout = "_FormLayout";
+    ViewData["Title"] = "Edit Category";
+}
+
+<form asp-action="Edit">
+    <div class="form-group">
+        <label asp-for="Title"></label>
+        <input asp-for="Title" class="form-control" />
+        <span asp-validation-for="Title"></span>
+    </div>
+
+    <input type="hidden" asp-for="Id" />
+    <input type="hidden" asp-for="CreateDate" />
+    <input type="hidden" asp-for="LastEditDate" />
+
+    <div class="form-group">
+        <button class="btn btn-primary" type="submit">Edit</button>
+        <a asp-action="Index" class="btn btn-danger">Back</a>
+    </div>
+</form>

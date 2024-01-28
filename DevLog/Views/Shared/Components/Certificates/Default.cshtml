@@ -1,0 +1,42 @@
+﻿@model IEnumerable<DevLog.Models.ViewModels.CertificateViewModel>
+
+@if (Model.Any())
+{
+    <!-- Certificates Start -->
+    <section id="certificates-area" class="area-mt">
+        <div class="container-fluid">
+            <div class="row mt-5 no-gutters">
+                <div class="col-12 area-title">
+                    <p>Certificates</p>
+                </div>
+
+                @foreach (var certificate in Model)
+                {
+                    <div class="col-lg-3 col-md-4 col-sm-6 col-12">
+                        <div class="certificate-card">
+                            <img src="@certificate.FilePath" alt="" class="img-fluid" />
+                            <div class="overlay">
+                                <div class="inner">
+                                    <p class="title">
+                                        @certificate.Title
+                                    </p>
+                                    <a href="@certificate.FilePath" class="link" data-lightbox="certificate-@certificate.Title" data-title="@certificate.Title">
+                                        <span class="fa fa-eye"></span>
+                                    </a>
+                                    @if (!string.IsNullOrWhiteSpace(certificate.Url))
+                                    {
+                                        <a href="@certificate.Url" class="link" target="_blank">
+                                            <span class="fa fa-link"></span>
+                                        </a>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+
+            </div>
+        </div>
+    </section>
+    <!-- Certificates End -->
+}

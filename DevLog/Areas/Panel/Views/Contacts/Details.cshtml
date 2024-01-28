@@ -1,0 +1,47 @@
+﻿@model DevLog.Areas.Panel.Models.ViewModels.ContactFormViewModel
+
+@{
+    Layout = "_FormLayout";
+    ViewData["Title"] = "Contact Details";
+}
+
+@section Scripts
+{
+    <script>
+        Panel.InitializeEditorReadOnly("#txtBody");
+    </script>
+}
+
+<div class="form-group">
+    <label asp-for="UserFullName"></label>
+    <input asp-for="UserFullName" class="form-control" disabled="disabled" />
+</div>
+<div class="form-group">
+    <label asp-for="Subject"></label>
+    <input asp-for="Subject" class="form-control" disabled="disabled" />
+</div>
+<div class="form-group">
+    <label asp-for="EmailOrPhoneNumber"></label>
+    <input asp-for="EmailOrPhoneNumber" class="form-control" disabled="disabled" />
+</div>
+<div class="form-group">
+    <label asp-for="Body"></label>
+    <textarea asp-for="Body" id="txtBody"></textarea>
+</div>
+<div class="form-group">
+    <label asp-for="Ip"></label>
+    <input asp-for="Ip" class="form-control" disabled="disabled" />
+</div>
+<div class="form-group">
+    <label asp-for="CreateDate"></label>
+    <input type="text" value="Model.CreateDate" class="form-control" disabled="disabled" />
+</div>
+<div class="form-group">
+    <label asp-for="LastEditDate"></label>
+    <input type="text" value="Model.LastEditDate" class="form-control" disabled="disabled" />
+</div>
+
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary">Edit</a>
+    <a asp-action="Index" class="btn btn-danger">Back</a>
+</div>

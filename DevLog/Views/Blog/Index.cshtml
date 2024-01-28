@@ -1,0 +1,66 @@
+﻿@using DevLog.Models.Shared.Pagination
+@using DevLog.Models.ViewModels
+@model DevLog.Models.ViewModels.PostsViewModel
+
+@{
+    ViewData["Title"] = "Blog";
+}
+
+@section Scripts
+{
+    <script>
+        Website.TextReduce(".blog-card-body-text", 50);
+    </script>
+}
+
+@await Html.PartialAsync("PartialViews/_BreadcrumbPV")
+
+<section id="blog-main-area">
+    <div class="container-fluid">
+        <div class="row">
+
+
+            @await Component.InvokeAsync("BlogSidebar")
+
+
+            <div class="col-lg-9 col-md-12 col-sm-12 col-12 order-lg-1 order-md-0 order-sm-0 order-0" id="blog-posts">
+
+                @if (Model.SearchString != null)
+                {
+                    <div class="row">
+                        <div class="col-12">
+                            <p class="text-white-50">
+                                Results for: "@Model.SearchString"
+                            </p>
+                        </div>
+                    </div>
+                }
+
+                <div class="row">
+                    <div class="col-12">
+
+                        @foreach (var post in Model.PostViewModels)
+                        {
+                            @await Component.InvokeAsync("BlogPostCard", new { postViewModel = post })
+                        }
+
+                    </div>
+
+                    <div class="col-12 mt-5">
+                        @await Html.PartialAsync("PartialViews/_PaginationPartialView", new Pagination()
+                   {
+                       Pager = Model.Pager,
+                       Params = new Dictionary<string, string>()
+                        {
+                        {nameof(PostsViewModel.SearchString), Model.SearchString ?? string.Empty},
+                        {nameof(PostsViewModel.PostCategoryId), Model.PostCategoryId.ToString() ?? string.Empty},
+                        {nameof(PostsViewModel.PostTag), Model.PostTag ?? string.Empty},
+                        {nameof(PostsViewModel.PostSortFilterType), Model.PostSortFilterType.ToString()},
+                        }
+                   })
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

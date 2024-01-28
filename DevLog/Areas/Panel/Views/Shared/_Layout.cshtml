@@ -1,0 +1,191 @@
+﻿@using System.Reflection
+@using DevLog.Core.Domain
+@using DevLog.Models.Constants
+@using Microsoft.AspNetCore.Identity
+@inject UserManager<User> UserManager
+
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Panel - @ViewData["Title"]</title>
+
+    <link rel="icon" type="image/x-icon" href="~/images/favicon.png">
+    <link rel="stylesheet" href="https://fonts.cdnfonts.com/css/work-sans">
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/lib/fontawesome/css/all.min.css" />
+    <link rel="stylesheet" href="~/lib/datatables/css/dataTables.bootstrap4.min.css" />
+    <link rel="stylesheet" href="~/lib/datatables/css/responsive.bootstrap4.min.css" />
+    <link rel="stylesheet" href="~/lib/tagger/tagger.css" />
+    <link rel="stylesheet" href="~/css/panel.css" />
+
+    @await RenderSectionAsync("Styles", required: false)
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark box-shadow py-2 px-2">
+            <div class="container-fluid">
+                <a asp-controller="Home" asp-action="Index" class="navbar-brand text-danger mr-4 ml-4">
+                    <span class="fa fa-home"></span>
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <div class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle mr-2" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <span class="fa fa-newspaper"></span>
+                                    Posts
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <a asp-controller="Posts" asp-action="Index" class="dropdown-item">
+                                            <span class="fa fa-pencil-alt"></span>
+                                            Posts
+                                        </a>
+                                    </li>
+
+                                    @if (User.IsInRole(UserRolesConstant.SuperAdmin) || User.IsInRole(UserRolesConstant.Admin))
+                                    {
+                                        <li>
+                                            <a asp-controller="PostCategories" asp-action="Index" class="dropdown-item">
+                                                <span class="fa fa-list"></span>
+                                                Categories
+                                            </a>
+                                        </li>
+                                    }
+
+                                    <li>
+                                        <a asp-controller="PostComments" asp-action="Index" class="dropdown-item">
+                                            <span class="fa fa-comments"></span>
+                                            Comments
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+
+                        @if (User.IsInRole(UserRolesConstant.SuperAdmin) || User.IsInRole(UserRolesConstant.Admin))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link" asp-controller="Contacts" asp-action="Index">
+                                    <span class="fa fa-phone mr-2"></span>
+                                    Contacts
+                                </a>
+                            </li>
+                        }
+
+                        @if (User.IsInRole(UserRolesConstant.SuperAdmin) || User.IsInRole(UserRolesConstant.Admin))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link" asp-controller="ProgressBars" asp-action="Index">
+                                    <span class="fa fa-bars mr-2"></span>
+                                    Progress
+                                </a>
+                            </li>
+                        }
+
+                        @if (User.IsInRole(UserRolesConstant.SuperAdmin) || User.IsInRole(UserRolesConstant.Admin))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link" asp-controller="Certificates" asp-action="Index">
+                                    <span class="fa fa-certificate mr-2"></span>
+                                    Certificates
+                                </a>
+                            </li>
+                        }
+
+                        @if (User.IsInRole(UserRolesConstant.SuperAdmin))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link" asp-controller="Users" asp-action="Index">
+                                    <span class="fa fa-users mr-2"></span>
+                                    Users
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a asp-controller="Settings" asp-action="Index" class="nav-link">
+                                    <span class="fa fa-cogs"></span>
+                                    Settings
+                                </a>
+                            </li>
+                        }
+                    </ul>
+                    <ul class="navbar-nav flex-grow-1 justify-content-end pr-5">
+                        <li class="nav-item">
+                            <div class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle mr-2" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="fa fa-user-circle"></i>
+                                    @User.Identity!.Name
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        @{
+                                            var currentUser = await UserManager.GetUserAsync(Context.User);
+                                        }
+                                        <a asp-controller="Users" asp-action="Details" asp-route-id="@currentUser!.Id" class="dropdown-item">
+                                            <i class="fa fa-edit mr-3"></i>Profile
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <form asp-controller="Users" asp-action="Logout">
+                                <button type="submit" class="btn btn-danger">Exit</button>
+                            </form>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container">
+        @RenderBody()
+    </div>
+
+    <footer class="pt-5">
+        <div class="container-fluid">
+            <div class="row pt-2 text-white text-center">
+                <div class="col-12">
+                    Made with
+                    <span class="fa fa-heart"></span>
+                    by <a href="https://github.com/ElliotOne" class="text-danger">Elliot One</a>
+                    <br />
+                    <span>@DateTime.Now.Year</span>
+                    <span>|</span>
+                    <span>Version @Assembly.GetEntryAssembly()?.GetName().Version</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="~/lib/datatables/js/jquery.dataTables.min.js"></script>
+    <script src="~/lib/datatables/js/dataTables.bootstrap4.min.js"></script>
+    <script src="~/lib/datatables/js/dataTables.responsive.min.js"></script>
+    <script src="~/lib/datatables/js/responsive.bootstrap4.min.js"></script>
+    <script src="~/lib/ckeditor/ckeditor.js"></script>
+    <script src="~/lib/ckeditor/config.js"></script>
+    <script src="~/lib/ckeditor/adapters/jquery.js"></script>
+    <script src="~/lib/tagger/tagger.js"></script>
+    <script src="~/lib/sortablejs/Sortable.min.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+    <script src="~/lib/jalali-moment/dist/jalali-moment.browser.min.js"></script>
+    <script src="~/js/panel.js"></script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+
+</body>
+
+</html>

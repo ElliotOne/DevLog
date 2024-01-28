@@ -1,0 +1,189 @@
+﻿/*------------------------Basic Start------------------------*/
+
+:root {
+    --light: #e2e2d5;
+    --dark: #323232;
+    --black: #323232;
+    --pink: #E91E63;
+    --red: #F50057;
+    --yellow: #ffe600;
+    --blue: #0051ff;
+    --purple: #8400db;
+    --purple1: #8400db;
+}
+
+.control-label {
+    color: rgb(89, 89, 89);
+}
+
+textarea {
+    resize: none;
+}
+
+@font-face {
+    font-family: 'Work Sans', sans-serif;
+    font-weight: 500;
+    font-style: normal;
+}
+
+body {
+    font-size: 0.95rem !important;
+    font-family: 'Work Sans', sans-serif !important;
+    background: rgb(2,0,36);
+    background: linear-gradient(360deg, rgba(2,0,36,1) 0%, rgba(4,2,40,1) 18%, rgba(6,5,47,1) 30%, rgba(56,31,102,1) 100%);
+    background-repeat: no-repeat;
+    background-size: contain;
+    min-height: 100vh;
+}
+
+.title-bar, .dataTables_filter, .dataTables_length, .dataTables_info {
+    color: #ffffff;
+}
+
+.field-validation-error {
+    color: var(--danger);
+}
+
+.btn.btn-warning {
+    color: #ffffff !important;
+}
+
+/*------------------------Basic End------------------------*/
+
+/*======================================================
+                    Top - Header Start
+======================================================*/
+
+.navbar {
+    background: rgba(0, 0, 0,0.5);
+}
+
+#top {
+    z-index: 100 !important;
+    width: 100%;
+}
+
+.navlink {
+    margin: 20px;
+}
+
+/*======================================================
+                    Top - Header End
+======================================================*/
+/*==========================================
+            Top Label End
+==========================================*/
+#topLabel {
+    background: rgba(0, 0, 0, 0.5) !important;
+}
+
+    #topLabel .container-fluid {
+        width: 100% !important;
+        padding: 0 !important;
+    }
+/*==========================================
+            Top Label End
+==========================================*/
+/*==========================================
+            Form Start
+==========================================*/
+
+form .form-group {
+    margin-bottom: 10px;
+}
+
+.field-validation-error {
+    color: var(--red);
+}
+
+
+/*==========================================
+            Form End
+==========================================*/
+
+/*==========================================
+            Login Start
+==========================================*/
+.login-card {
+    background-color: white;
+    padding: 30px 10px;
+    margin-top: 5vh;
+    border-radius: 10px;
+    color: var(--gray)
+}
+
+.login-card-header {
+    text-align: center;
+}
+
+    .login-card-header img {
+        height: 20vh !important;
+        width: 50%;
+    }
+
+.login-card-body {
+    padding-top: 25px;
+}
+
+/*==========================================
+            Login End
+==========================================*/
+.tagger {
+    padding: 20px 0 !important;
+    border: 1px solid #e8ebf1 !important;
+    border-radius: 4px !important;
+    background-color: #ffffff;
+}
+
+    .tagger > ul {
+        display: inline-block !important;
+    }
+
+        .tagger > ul li {
+            display: inline-block !important;
+            margin-bottom: 20px;
+        }
+
+            .tagger > ul li:first-child {
+                padding-left: 10px
+            }
+
+            .tagger > ul li > span {
+                color: #ffffff;
+                background-color: var(--primary) !important;
+                border: none !important;
+                cursor: default !important
+            }
+
+.form-box {
+    border-radius: 5px;
+    background-color: rgba(0, 0, 0, 0.36);
+    padding: 30px;
+}
+
+    .form-box .form-box-title,
+    .form-box label {
+        color: #ffffff;
+    }
+
+    .form-box .form-box-title {
+        padding-top: 10px;
+        padding-bottom: 25px;
+    }
+
+#files-preview.multiple-files .thumbnail {
+    height: 100px;
+    margin: 10px;
+    display: inline-block;
+}
+
+#files-preview.single-file .thumbnail {
+    height: auto;
+    width: 40%;
+    margin: 0 auto;
+    display: block;
+}
+
+.tagger.disabled {
+    background-color: #e9ecef !important;
+}

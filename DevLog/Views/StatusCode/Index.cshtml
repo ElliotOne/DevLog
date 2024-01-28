@@ -1,0 +1,28 @@
+﻿@model int
+
+@{
+    var statusCode = Model;
+
+    var message = statusCode switch
+    {
+        400 => "Oops! Bad Request: The server didn't like the way the request was made.",
+        403 => "Hold up! Forbidden: You don't have permission to access this resource.",
+        404 => "Lost in cyberspace! The page or content you're looking for seems to have vanished.",
+        408 => "Tick-tock! Request Timeout: The server got tired of waiting for your request.",
+        500 => "Uh-oh! Internal Server Error: Something went haywire on our end. We're on it!",
+        _ => "Huh? Something unexpected happened. We're investigating!"
+    };
+}
+
+<section id="errors-area" class="area-mt">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="bg-danger text-white">
+                    <span id="error-title">Error @Model :(</span>
+                    <span id="error-message">@message</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

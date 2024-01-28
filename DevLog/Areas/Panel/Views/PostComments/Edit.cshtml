@@ -1,0 +1,52 @@
+﻿@using DevLog.Areas.Panel.Models.ViewModels
+@model DevLog.Areas.Panel.Models.ViewModels.PostCommentFormViewModel
+@{
+    Layout = "_FormLayout";
+    ViewData["Title"] = "Edit Comment";
+}
+@section Scripts {
+    <script>
+        Panel.InitializeEditor("#txtBody");
+    </script>
+}
+
+<form asp-action="Edit">
+    <div class="form-group">
+        <label asp-for="UserFullName"></label>
+        <input asp-for="UserFullName" class="form-control" disabled="disabled" />
+    </div>
+    <div class="form-group">
+        <label asp-for="PostTitle"></label>
+        <input asp-for="PostTitle" class="form-control" disabled="disabled" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Body"></label>
+        <textarea asp-for="Body" id="txtBody"></textarea>
+        <span asp-validation-for="Body"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Email"></label>
+        <input asp-for="Email" class="form-control" />
+        <span asp-validation-for="Email"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Status"></label>
+        <select asp-for="Status" asp-items="Html.GetEnumSelectList<PostCommentStatus>()" class="custom-select"></select>
+        <span asp-validation-for="Status"></span>
+    </div>
+
+    <input type="hidden" asp-for="Id" />
+    <input type="hidden" asp-for="Ip" />
+    <input type="hidden" asp-for="IsEdited" />
+    <input type="hidden" asp-for="CreateDate" />
+    <input type="hidden" asp-for="LastEditDate" />
+    <input type="hidden" asp-for="ParentId" />
+    <input type="hidden" asp-for="UserId" />
+    <input type="hidden" asp-for="PostId" />
+    <input type="hidden" asp-for="PostUserId" />
+
+    <div class="form-group">
+        <button class="btn btn-primary" type="submit">Edit</button>
+        <a asp-action="Index" class="btn btn-danger">Back</a>
+    </div>
+</form>

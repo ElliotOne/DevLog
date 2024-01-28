@@ -1,0 +1,49 @@
+﻿@using DevLog.Models.ViewModels
+@model DevLog.Models.ViewModels.PostCommentTreeViewModel
+
+
+
+@if (Model.PostCommentViewModels.Any(s => (s.ParentId == Model.CommentSeed)))
+{
+    foreach (var node in Model.PostCommentViewModels)
+    {
+        if ((node.ParentId == Model.CommentSeed))
+        {
+
+            var inner = new PostCommentTreeViewModel { CommentSeed = node.Id, PostCommentViewModels = Model.PostCommentViewModels };
+
+            <div class="card mt-2 w-100">
+
+                <div class="card-body @(node.UserFullName == null ? "admin-comment" : "")">
+                    <div class="row">
+                        <div class="col-12">
+                            <p>
+                                <strong>@(node.UserFullName ?? "Writer")</strong>
+
+                                <span class="float-right ml-3">@node.CreateDate</span>
+                                <span class="float-right text-danger">@(node.IsEdited == true ? "Edited" : "")</span>
+                            </p>
+
+                            <div class="clearfix"></div>
+                            <p>
+                                @node.Body
+                            </p>
+
+
+                            <div class="row">
+                                <div class="col-6">
+                                    <a href="#commentForm" class="btn btn-secondary text-white ml-2 answerBtn" data-parentid="@node.Id" data-parentuser="@(node.UserFullName ?? "Writer")"> <i class="fa fa-reply"></i> Reply</a>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        @await Component.InvokeAsync("Comments", new { commentTree = inner })
+
+                    </div>
+                </div>
+
+            </div>
+        }
+    }
+}

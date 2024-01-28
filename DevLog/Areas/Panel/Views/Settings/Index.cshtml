@@ -1,0 +1,111 @@
+﻿@model DevLog.Areas.Panel.Models.ViewModels.SettingFormViewModel
+
+@{
+    Layout = "_FormLayout";
+    ViewData["Title"] = "Settings";
+}
+
+<form asp-action="Index">
+    <div class="form-group">
+        <label asp-for="Phone1"></label>
+        <input asp-for="Phone1" class="form-control" />
+        <span asp-validation-for="Phone1"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Phone2"></label>
+        <input asp-for="Phone2" class="form-control" />
+        <span asp-validation-for="Phone2"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Email1"></label>
+        <input asp-for="Email1" class="form-control" />
+        <span asp-validation-for="Email1"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Email2"></label>
+        <input asp-for="Email2" class="form-control" />
+        <span asp-validation-for="Email2"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Instagram"></label>
+        <input asp-for="Instagram" class="form-control" />
+        <span asp-validation-for="Instagram"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Telegram"></label>
+        <input asp-for="Telegram" class="form-control" />
+        <span asp-validation-for="Telegram"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="GooglePlus"></label>
+        <input asp-for="GooglePlus" class="form-control" />
+        <span asp-validation-for="GooglePlus"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="FaceBook"></label>
+        <input asp-for="FaceBook" class="form-control" />
+        <span asp-validation-for="FaceBook"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="LinkedIn"></label>
+        <input asp-for="LinkedIn" class="form-control" />
+        <span asp-validation-for="LinkedIn"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="YouTube"></label>
+        <input asp-for="YouTube" class="form-control" />
+        <span asp-validation-for="YouTube"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="GitHub"></label>
+        <input asp-for="GitHub" class="form-control" />
+        <span asp-validation-for="GitHub"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="WalletName1"></label>
+        <input asp-for="WalletName1" class="form-control" />
+        <span asp-validation-for="WalletName1"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="WalletAddress1"></label>
+        <input asp-for="WalletAddress1" class="form-control" />
+        <span asp-validation-for="WalletAddress1"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="WalletName2"></label>
+        <input asp-for="WalletName2" class="form-control" />
+        <span asp-validation-for="WalletName2"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="WalletAddress2"></label>
+        <input asp-for="WalletAddress2" class="form-control" />
+        <span asp-validation-for="WalletAddress2"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="WalletName3"></label>
+        <input asp-for="WalletName3" class="form-control" />
+        <span asp-validation-for="WalletName3"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="WalletAddress3"></label>
+        <input asp-for="WalletAddress3" class="form-control" />
+        <span asp-validation-for="WalletAddress3"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="WalletName4"></label>
+        <input asp-for="WalletName4" class="form-control" />
+        <span asp-validation-for="WalletName4"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="WalletAddress4"></label>
+        <input asp-for="WalletAddress4" class="form-control" />
+        <span asp-validation-for="WalletAddress4"></span>
+    </div>
+
+    <input type="hidden" asp-for="Id" />
+
+    <div class="form-group">
+        <button class="btn btn-primary" type="submit">Edit</button>
+        <a asp-action="Index" class="btn btn-danger">Back</a>
+    </div>
+</form>

@@ -1,0 +1,182 @@
+﻿@{
+    ViewData["Title"] = "Home";
+}
+
+@section Scripts
+{
+    <script>
+        Website.TextReduce(".blog-card-body-text", 50);
+        Website.WaterEffect("#slider-area  .slider-wrapper");
+
+        var app = document.getElementById('slider-subtitle');
+
+        var typewriter = new Typewriter(app, {
+            loop: true,
+            delay: 75
+        });
+
+        typewriter
+            .pauseFor(2000)
+            .typeString('Programmer')
+            .pauseFor(2000)
+            .deleteAll()
+            .typeString('Developer')
+            .pauseFor(2000)
+            .deleteAll()
+            .typeString('Software Engineer')
+            .pauseFor(2000)
+            .deleteAll()
+            .typeString('Solopreneur')
+            .pauseFor(2000)
+            .deleteAll()
+            .typeString('Content Creator')
+            .pauseFor(2000)
+            .deleteAll()
+            .start();
+    </script>
+}
+
+
+<!-- Top Slider Start -->
+<section id="slider-area">
+    <div class="slider-wrapper">
+        <div class="overlay">
+            <p class="title">DevLog: Developer's Blog</p>
+
+            <p class="subtitle" id="slider-subtitle">
+                <span>Programmer</span>
+                ,
+                <span>Software Engineer</span>
+                ,
+                <span>Tutor</span>
+            </p>
+        </div>
+    </div>
+</section>
+<!-- Top Slider End -->
+<!-- Description Start -->
+<section id="descritpion-area">
+    <div class="container-fluid p-0">
+        <div class="row g-0">
+
+            <div class="col-lg-6 col-md-12 col-sm-12 col-12 m-0">
+                <div class="parallax-card">
+                    <h2 class="parallax-card-title">Web Design Services</h2>
+                    <p class="parallax-card-content text-justify p-5" data-aos="zoom-in-up">
+                        Explore a variety of website options here, from corporate to personal, at affordable rates. Take a peek at some of my previous projects below, all crafted with the latest tech for a smooth and responsive experience on any device.
+                    </p>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-12 col-sm-12 col-12">
+                <div class="parallax parallax1 jarallax"></div>
+            </div>
+
+
+            <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+                <div class="parallax parallax2 jarallax"></div>
+            </div>
+            <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+                <div class="parallax-card">
+                    <h3 class="parallax-card-title">Automation, Administrative, and Accounting Software Development</h3>
+                    <p class="parallax-card-content text-justify p-5" data-aos="zoom-in-up">
+                        Crafting intelligent business solutions, from robust accounting systems to streamlined administrative automation, is fundamental for the success of any enterprise. I specialize in tailoring various systems to align with your unique objectives!
+                    </p>
+                    <a href="https://github.com/ElliotOne" class="btn btn-block btn-primary py-3 mb-5" data-aos="fade-up" target="_blank">Check out my GitHub!</a>
+                </div>
+            </div>
+
+
+            <div class="col-lg-6 col-md-12 col-sm-12 col-12 order-lg-5 order-md-5 order-sm-5 order-5">
+                <div class="parallax-card">
+                    <h5 class="parallax-card-title">Guidance in Software Development</h5>
+                    <p class="parallax-card-content text-justify p-5" data-aos="zoom-in-up">
+                        Discover detailed insights into the software and websites I create, thoughtfully organized and accessible to you, our valued client!
+                        If you're a student with a passion for learning programming, software development, or specific applications, don't hesitate to connect. I'm excited to share my knowledge and support your learning journey at your convenience.
+                    </p>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-12 col-sm-12 col-12 order-lg-6 order-md-6 order-sm-6 order-6">
+                <div class="parallax parallax3 jarallax"></div>
+            </div>
+
+        </div>
+    </div>
+</section>
+<!-- Description End -->
+@await Component.InvokeAsync("Certificates")
+
+<!-- Services Start -->
+<section id="services-area" class="area-mt">
+    <div class="container-fluid">
+        <div class="row mt-5">
+            <div class="col-12 area-title">
+                <p>Services and Support</p>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-12">
+                <div class="service-card">
+                    <span class="fab fa-chrome"></span>
+                    <h3>Website</h3>
+                    <p>
+                        Designing various responsive websites.
+                    </p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-12">
+                <div class="service-card">
+                    <span class="fa fa-mobile"></span>
+                    <h3>Web Application</h3>
+                    <p>
+                        Designing and developing mobile applications.
+                    </p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-12">
+                <div class="service-card">
+                    <span class="fab fa-android"></span>
+                    <h3>Artificial Intelligence Software</h3>
+                    <p>
+                        Developing intelligent systems based on artificial intelligence.
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6 col-sm-12">
+                <div class="service-card">
+                    <span class="fa fa-money-check"></span>
+                    <h3>Cost</h3>
+                    <p>
+                        Entrust your projects to us at the minimum cost!
+                    </p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-12">
+                <div class="service-card">
+                    <span class="fa fa-tag"></span>
+                    <h3>Discount</h3>
+                    <p>
+                        Special discounts for you, our valued clients.
+                    </p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-12">
+                <div class="service-card">
+                    <span class="fa fa-user-friends"></span>
+                    <h3>Support</h3>
+                    <p>
+                        Comprehensive support for products and resolution of potential issues.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+<!-- Services End -->
+
+<div class="container-fluid">
+    @await Component.InvokeAsync("ProgressBars")
+</div>
+
+@await Component.InvokeAsync("LatestPosts")
+
+@await Component.InvokeAsync("ContactBar")

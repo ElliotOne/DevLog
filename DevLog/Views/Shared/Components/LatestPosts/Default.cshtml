@@ -1,0 +1,24 @@
+﻿@model IEnumerable<DevLog.Models.ViewModels.PostViewModel>
+
+@if (Model.Any())
+{
+    <!-- Blog Start -->
+    <section id="blog-area" class="area-mt">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12 area-title">
+                    <p>Latest Pots</p>
+                </div>
+
+                @foreach (var post in Model)
+                {
+                    <div class="col-lg-6 col-md-12 col-sm-12 col-12" data-aos="slide-up">
+                        @await Component.InvokeAsync("BlogPostCard", new { postViewModel = post })
+                    </div>
+                }
+
+            </div>
+        </div>
+    </section>
+    <!-- Blog End -->
+}

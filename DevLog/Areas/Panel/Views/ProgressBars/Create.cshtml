@@ -1,0 +1,24 @@
+﻿@model DevLog.Areas.Panel.Models.ViewModels.ProgressBarFormViewModel
+
+@{
+    Layout = "_FormLayout";
+    ViewData["Title"] = "Create Progress";
+}
+
+<form asp-action="Create" method="POST">
+    <div class="form-group">
+        <label asp-for="Topic"></label>
+        <input asp-for="Topic" class="form-control" />
+        <span asp-validation-for="Topic"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Percentage"></label>
+        <input asp-for="Percentage" class="form-control" />
+        <span asp-validation-for="Percentage"></span>
+    </div>
+
+    <div class="form-group">
+        <button class="btn btn-success" type="submit">Create</button>
+        <a asp-action="Index" class="btn btn-danger">Back</a>
+    </div>
+</form>

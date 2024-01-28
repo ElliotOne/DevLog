@@ -1,0 +1,70 @@
+﻿@model DevLog.Models.ViewModels.DonateViewModel
+
+@{
+    ViewData["Title"] = "Donation";
+}
+
+@await Html.PartialAsync("PartialViews/_BreadcrumbPV")
+
+<section id="donate-area">
+    <div class="container-fluid">
+        <div class="row area-mt">
+            <div class="col-12 area-title">
+                <p>Make a donation</p>
+            </div>
+            <div class="col-12 text-center">
+                <div data-aos="zoom-in-up">
+                    <p class="text-effect text-justify">
+                        Hello there, friend!
+
+                        If you find value in the content and endeavors on my website and wish to contribute to its growth and the enhancement of its features, you have the option to make a financial donation.
+
+                        All donations received will be utilized to improve content quality, develop free software, and explore innovative ideas. If you have unique projects or require programming assistance, feel free to reach out. I'm always excited about collaborating on interesting ventures.
+
+                        While I operate as a commercial programmer, my commitment extends to supporting the open-source community. You can explore some of my projects on platforms like GitHub. I am dedicated to utilizing my skills for the betterment of the wider programming community.
+
+                        Your financial support, regardless of the amount, would not only bring a smile to my face but also aid in sustaining and expanding my efforts. Your generosity is truly appreciated, and it motivates me to continue delivering valuable content and contributions. Thank you for considering supporting my journey!
+                    </p>
+                </div>
+
+                @if (!string.IsNullOrWhiteSpace(Model.WalletName1) ||
+                !string.IsNullOrWhiteSpace(Model.WalletName2) ||
+                !string.IsNullOrWhiteSpace(Model.WalletName3) ||
+                !string.IsNullOrWhiteSpace(Model.WalletName4))
+                {
+                    <div id="donate-box" data-aos="fade-up">
+                        @if (!string.IsNullOrWhiteSpace(Model.WalletName1) && !string.IsNullOrWhiteSpace(Model.WalletAddress1))
+                        {
+                            <p>
+                                <span class="wallet-name">@Model.WalletName1 : </span>
+                                <span class="wallet-address">@Model.WalletAddress1</span>
+                            </p>
+                        }
+                        @if (!string.IsNullOrWhiteSpace(Model.WalletName2) && !string.IsNullOrWhiteSpace(Model.WalletAddress2))
+                        {
+                            <p>
+                                <span class="wallet-name">@Model.WalletName2 : </span>
+                                <span class="wallet-address">@Model.WalletAddress2</span>
+                            </p>
+                        }
+                        @if (!string.IsNullOrWhiteSpace(Model.WalletName3) && !string.IsNullOrWhiteSpace(Model.WalletAddress3))
+                        {
+                            <p>
+                                <span class="wallet-name">@Model.WalletName3 : </span>
+                                <span class="wallet-address">@Model.WalletAddress3</span>
+                            </p>
+                        }
+                        @if (!string.IsNullOrWhiteSpace(Model.WalletName4) && !string.IsNullOrWhiteSpace(Model.WalletAddress4))
+                        {
+                            <p>
+                                <span class="wallet-name">@Model.WalletName4 : </span>
+                                <span class="wallet-address">@Model.WalletAddress4</span>
+                            </p>
+                        }
+                    </div>
+                }
+
+            </div>
+        </div>
+    </div>
+</section>

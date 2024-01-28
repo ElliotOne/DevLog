@@ -1,0 +1,266 @@
+﻿@using DevLog.Models.ViewModels
+@model DevLog.Models.ViewModels.PostViewModel
+
+@{
+    ViewData["Title"] = Model.Title;
+}
+
+@section Scripts
+{
+    <script>
+        function postCommentFormSent(xhr) {
+            Website.JsonResultHandler(xhr.responseJSON);
+
+            $("#PostCommentFormViewModel_UserFullName").val("");
+            $("#PostCommentFormViewModel_Email").val("");
+            $("#PostCommentFormViewModel_Body").val("");
+
+            clearCommentReply();
+        }
+
+        $(".comments .btn-reply").click(function (e) {
+            $("#input-hidden-parentId").val(e.target.dataset.commentid);
+            $(".comment-reply-username").text(e.target.parentElement.querySelector(".username").innerText);
+            $(".comment-reply-box").addClass("show");
+        });
+
+        function clearCommentReply() {
+            $("#input-hidden-parentId").val("");
+            $(".comment-reply-box-username").text("");
+            $(".comment-reply-box").removeClass("show");
+        }
+
+        $(document).on('click',
+            '.comment-reply-box.show',
+            function () {
+                clearCommentReply();
+            });
+    </script>
+
+}
+
+@await Html.PartialAsync("PartialViews/_BreadcrumbPV")
+
+<section id="blog-main-area">
+    <div class="container-fluid">
+        <div class="row">
+
+
+            @await Component.InvokeAsync("BlogSidebar")
+
+
+            <div class="col-lg-9 col-md-12 col-sm-12 col-12 order-lg-1 order-md-0 order-sm-0 order-0" id="blog-posts">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="blog-card">
+                            <div class="blog-card-header">
+                                <div class="row text-center">
+                                    <div class="col-lg-5 col-md-6 col-sm-12 col-12">
+                                        <span class="fa fa-user"></span>
+                                        <span>
+                                            @Model.UserFullName
+                                        </span>
+                                    </div>
+                                    <div class="col-lg-5 col-md-6 col-12">
+                                        <div class="row">
+                                            <div class="col-lg-8 col-md-6 col-sm-12 col-12">
+                                                <span class="fa fa-clock"></span>
+                                                <span>@Model.CreateDate</span>
+                                            </div>
+                                            <div class="col-lg-4 col-md-6 col-sm-12 col-12">
+                                                @if (Model.PostCommentViewModels.Any())
+                                                {
+                                                    <span class="fa fa-comment"></span>
+                                                    <span>
+                                                        @Model.PostCommentViewModels.Count()
+                                                    </span>
+                                                }
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="blog-card-body">
+                                <img src="@Model.FilePath" alt="@Model.Title" />
+                                <p class="blog-card-body-title">
+                                    @Model.Title
+                                </p>
+                                <div class="blog-card-body-text">
+                                    @Html.Raw(Model.Body)
+                                </div>
+                            </div>
+                            <div class="blog-card-footer">
+                                <div class="row blog-card-share-links border-bottom pb-3">
+                                    <div class="col-lg-4 col-md-5 col-sm-12 col-12 text-center">
+                                        <span class="small">Share</span>
+                                    </div>
+                                    <div class="col-lg-8 col-md-7 col-sm-12 col-12 text-center">
+                                        @{
+                                            string currentUrl = Context.Request.Scheme + "://" + Context.Request.Host + Context.Request.Path;
+                                            string enc = System.Net.WebUtility.UrlEncode(currentUrl);
+                                            string text = System.Net.WebUtility.UrlEncode(Model.Title);
+                                        }
+
+                                        <ul>
+                                            <li>
+                                                <a href="https://t.me/share/url?url={@enc}&text={@text}">
+                                                    <span class="fab fa-telegram-plane" title="Share on Telegram"></span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="https://www.facebook.com/sharer/sharer.php?u=@enc" target="_blank" rel="noopener noreferrer nofollow">
+                                                    <span class="fab fa-facebook" title="Share on Facebook"></span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="https://twitter.com/intent/tweet?url=@enc&text=@text">
+                                                    <span class="fab fa-twitter" title="Share on Twitter"></span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="row blog-card-tags">
+                                    <div class="col-12 small">
+                                        <span class="fa fa-tag"></span>
+                                        <span>Tags</span>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="blog-sidebar-section-body">
+
+                                            @if (!string.IsNullOrWhiteSpace(Model.Tags))
+                                            {
+                                                foreach (var tag in Model.Tags?.Split(","))
+                                                {
+                                                    <a asp-controller="Blog" asp-action="Index" asp-route-postTag="@tag">
+                                                        @tag
+                                                    </a>
+                                                }
+                                            }
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12 mt-5">
+                        <div class="blog-writer-card">
+                            <div class="col-12">
+                                <span class="blog-writer-card-title">Writer</span>
+                                <ul class="blog-writer-card-details">
+                                    <li><span>@Model.UserFullName</span></li>
+                                </ul>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-lg-3 col-md-4 col-sm-12 col-12">
+                                    <img src="@Model.UserFilePath" alt="@Model.UserFullName" id="blog-writer-card-img" class="blog-writer-card-img">
+                                </div>
+                                <div class="col-lg-9 col-md-4 col-sm-12 col-12">
+                                    <p id="blog-writer-card-description">
+                                        @Model.UserBiography
+                                    </p>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    @if (Model.IsCommentsOn)
+                    {
+                        <div class="col-12 mt-5">
+                            <div class="blog-commentform" id="commentForm">
+                                <form method="post" asp-action="CommentPost"
+                                      data-ajax="true" data-ajax-method="post" data-ajax-update="#alert-box" data-ajax-loading="#spinner" data-ajax-complete="postCommentFormSent">
+
+                                    <input type="hidden" asp-for="PostCommentFormViewModel.PostId" value="@Model.Id" />
+                                    <input type="hidden" asp-for="PostCommentFormViewModel.ParentId" id="input-hidden-parentId" />
+
+                                    <div class="form-group col-lg-12 col-md-12 col-sm-12">
+                                        <div class="comment-reply-box btn btn-bordered">
+                                            <span class="fa fa-times"></span>
+                                            <span>To</span>
+                                            <span class="comment-reply-username"></span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label asp-for="PostCommentFormViewModel.UserFullName"></label>
+                                        <input type="text" asp-for="PostCommentFormViewModel.UserFullName" class="form-control rounded-0 py-2">
+                                        <span asp-validation-for="PostCommentFormViewModel.UserFullName"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label asp-for="PostCommentFormViewModel.Email"></label>
+                                        <input type="text" asp-for="PostCommentFormViewModel.Email" class="form-control rounded-0 py-2">
+                                        <span asp-validation-for="PostCommentFormViewModel.Email"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label asp-for="PostCommentFormViewModel.Body"></label>
+                                        <textarea asp-for="PostCommentFormViewModel.Body" cols="30" rows="10"
+                                                  class="form-control rounded-0"></textarea>
+                                        <span asp-validation-for="PostCommentFormViewModel.Body"></span>
+                                    </div>
+
+                                    <div id="replyto-box">
+                                        <button id="replyto-remove" type="button">
+                                            <span class="fa fa-times"></span>
+                                        </button>
+                                        Reply to:
+                                        <span id="replyto-username"></span>
+                                    </div>
+
+                                    <div class="form-group mt-4">
+                                        <span id="spinner" style="display: none;">
+                                            <i class="fas fa-spinner fa-spin"></i>
+                                        </span>
+                                        <input type="submit" value="Send">
+                                    </div>
+
+                                </form>
+                            </div>
+                        </div>
+                    }
+                    else
+                    {
+
+                        <div class="col-12 mt-5">
+                            <div class="bg-danger text-white p-5 text-center">
+                                <p>
+                                    <span class="fa fa-exclamation"></span>
+                                    Commenting is currently disabled for this article.
+                                </p>
+                            </div>
+                        </div>
+                    }
+
+
+                    <div class="col-12 mt-5">
+                        <div class="comments-list">
+
+                            @if (Model.PostCommentViewModels.Any())
+                            {
+                                <p>@Model.PostCommentViewModels.Count() Comments</p>
+
+                                @if (Model.PostCommentViewModels.Any())
+                                {
+                                    @await Component.InvokeAsync("Comments", new
+                                        {
+                                            commentTree = new PostCommentTreeViewModel()
+                           {
+                               CommentSeed = null,
+                               PostCommentViewModels = Model.PostCommentViewModels.ToList()
+                           }
+                                        })
+                                }
+                            }
+
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

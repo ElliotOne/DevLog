@@ -1,0 +1,100 @@
+﻿@model DevLog.Models.ViewModels.BlogSidebarViewModel
+
+<div class="col-lg-3 col-md-12 col-sm-12 col-12 order-lg-0 order-md-1 order-sm-1 order-1" id="blog-sidebar">
+    <div class="row">
+        <div class="col-12" id="blog-sidebsar-cats">
+            <div class="blog-sidebar-section">
+                <div class="blog-sidebar-section-header">
+                    <span class="fa fa-list"></span>
+                    <span class="blog-sidebar-section-title">Categories</span>
+                </div>
+                <div class="blog-sidebar-section-body">
+                    <ul>
+                        @if (Model.PostCategoryViewModels.Any())
+                        {
+                            foreach (var postCategory in Model.PostCategoryViewModels)
+                            {
+                                <li>
+                                    <a asp-controller="Blog" asp-action="Index" asp-route-postCategoryId="@postCategory.Id">@postCategory.Title</a>
+                                </li>
+                            }
+                        }
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-12" id="blog-sidebar-latests">
+            <div class="blog-sidebar-section">
+                <div class="blog-sidebar-section-header">
+                    <span class="fa fa-newspaper"></span>
+                    <span class="blog-sidebar-section-title">Latest Posts</span>
+                </div>
+                <div class="blog-sidebar-section-body">
+                    @if (Model.PostViewModels.Any())
+                    {
+                        foreach (var post in Model.PostViewModels)
+                        {
+                            <a asp-controller="Blog" asp-action="Post" asp-route-id="@post.Id" class="latest-post-card">
+                                <div class="latest-post-card-left">
+                                    <img src="@post.FilePath" alt="@post.Title">
+                                </div>
+                                <div class="latest-post-card-right">
+                                    <span>@post.Title</span>
+                                </div>
+                            </a>
+                        }
+                    }
+                </div>
+            </div>
+        </div>
+        <div class="col-12" id="blog-sidebar-links">
+            <div class="blog-sidebar-section">
+                <div class="blog-sidebar-section-header">
+                    <span class="fa fa-link"></span>
+                    <span class="blog-sidebar-section-title">Links</span>
+                </div>
+                <div class="blog-sidebar-section-body">
+                    <ul>
+                        <li>
+                            <a href="https://www.linkedin.com/in/elliotone/" class="text-danger">LinkedIn</a>
+                        </li>
+                        <li>
+                            <a href="https://github.com/ElliotOne" class="text-danger">GitHub</a>
+                        </li>
+                        <li>
+                            <a href="http://www.xant.ir" class="text-danger">XANT</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-12" id="blog-sidebar-tags">
+            <div class="blog-sidebar-section">
+                <div class="blog-sidebar-section-header">
+                    <span class="fa fa-tag"></span>
+                    <span class="blog-sidebar-section-title">Latest Tags</span>
+                </div>
+                <div class="blog-sidebar-section-body">
+                    @foreach (var postTag in Model.PostTags)
+                    {
+                        <a asp-controller="Blog" asp-action="Index" asp-route-postTag="@postTag">
+                            @postTag
+                        </a>
+                    }
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12" id="blog-sidebar-ads">
+            <div class="blog-sidebar-section">
+                <div class="blog-sidebar-section-header">
+                    <span class="fa fa-ad"></span>
+                    <span class="blog-sidebar-section-title">Advertisements</span>
+                </div>
+                <div class="blog-sidebar-section-body">
+                    There is no advertisement at the moment.
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

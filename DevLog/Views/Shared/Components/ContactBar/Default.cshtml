@@ -1,0 +1,60 @@
+﻿@model DevLog.Core.Domain.Setting
+
+<!-- Contact Start -->
+<section id="contact-area" class="area-mt">
+    <div class="container-fluid">
+        <div class="row contact-bar">
+            <div class="col-lg-3 col-md-6 col-sm-12 col-12" data-aos="zoom-in-down">
+                <a href="tel:@Model.Phone1" class="contact-card">
+                    <div class="contact-card-header">
+                        <span class="fa fa-phone"></span>
+                        <span>Phone</span>
+                    </div>
+                    <div class="contact-card-body">
+                        <span>@Model.Phone1</span>
+                    </div>
+                </a>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-12 col-12" data-aos="zoom-in-down">
+                <a href="mailto:@Model.Email1" class="contact-card">
+                    <div class="contact-card-header">
+                        <span class="fa fa-envelope"></span>
+                        <span>Email</span>
+                    </div>
+                    <div class="contact-card-body">
+                        <span>@Model.Email1</span>
+                    </div>
+                </a>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-12 col-12" data-aos="zoom-in-down">
+                <a href="@Model.GitHub" class="contact-card">
+                    <div class="contact-card-header">
+                        <span class="fab fa-github"></span>
+                        <span>GitHub</span>
+                    </div>
+                    <div class="contact-card-body">
+                        @{
+                            var github = Model.GitHub?.Split('/');
+                        }
+                        <span>@github?.LastOrDefault()</span>
+                    </div>
+                </a>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-12 col-12" data-aos="zoom-in-down">
+                <a href="@Model.Telegram" class="contact-card">
+                    <div class="contact-card-header">
+                        <span class="fab fa-telegram"></span>
+                        <span>Telegram</span>
+                    </div>
+                    <div class="contact-card-body">
+                        @{
+                            var telegram = Model.Telegram?.Split('/');
+                        }
+                        <span>@telegram?.LastOrDefault()</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Contact End -->

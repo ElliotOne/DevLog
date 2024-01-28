@@ -1,0 +1,65 @@
+﻿@model DevLog.Models.Shared.Pagination.Pagination
+
+<!-- pager -->
+@if (Model.Pager.EndPage > 1)
+{
+    <ul class="pagination justify-content-center">
+
+        @if (Model.Pager.CurrentPage > 1)
+        {
+            var newDic = new Dictionary<string, string>();
+
+            if (Model.Params.Any())
+            {
+                foreach (var keyValuePair in Model.Params)
+                {
+                    newDic.Add(keyValuePair.Key, keyValuePair.Value);
+                }
+            }
+
+            newDic.Add("page", 1.ToString());
+
+            <li>
+                <a asp-action="Index" asp-route-page="@newDic">Previous</a>
+            </li>
+        }
+
+        @for (int p = Model.Pager.StartPage; p <= Model.Pager.EndPage; p++)
+        {
+            var newDic = new Dictionary<string, string>();
+
+            if (Model.Params.Any())
+            {
+                foreach (var keyValuePair in Model.Params)
+                {
+                    newDic.Add(keyValuePair.Key, keyValuePair.Value);
+                }
+            }
+
+            newDic.Add("page", p.ToString());
+
+            <li class="@(p == Model.Pager.CurrentPage ? "active" : "") px-1">
+                <a asp-action="Index" asp-all-route-data="@newDic">@p</a>
+            </li>
+        }
+
+        @if (Model.Pager.CurrentPage < Model.Pager.TotalPages && Model.Pager.TotalPages > Model.Pager.PageSize)
+        {
+            var newDic = new Dictionary<string, string>();
+
+            if (Model.Params.Any())
+            {
+                foreach (var keyValuePair in Model.Params)
+                {
+                    newDic.Add(keyValuePair.Key, keyValuePair.Value);
+                }
+            }
+
+            newDic.Add("page", Model.Pager.TotalPages.ToString());
+
+            <li>
+                <a asp-action="Index" asp-all-route-data="@newDic">Next</a>
+            </li>
+        }
+    </ul>
+}

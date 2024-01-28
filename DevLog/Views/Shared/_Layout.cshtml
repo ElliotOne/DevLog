@@ -1,0 +1,97 @@
+﻿<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+    <title>@ViewBag.Title</title>
+
+
+    <link rel="icon" type="image/x-icon" href="~/images/favicon.png">
+    <link rel="stylesheet" href="https://fonts.cdnfonts.com/css/work-sans">
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/lib/fontawesome/css/all.min.css" />
+    <link rel="stylesheet" href="~/lib/OwlCarousel2/assets/owl.carousel.min.css" />
+    <link rel="stylesheet" href="~/lib/OwlCarousel2/assets/owl.theme.default.min.css" />
+    <link rel="stylesheet" href="~/lib/aos/aos.css" />
+    <link rel="stylesheet" href="~/lib/jquery-confirm/jquery-confirm.min.css">
+    <link rel="stylesheet" href="~/lib/lightbox2/css/lightbox.min.css" />
+    <link rel="stylesheet" href="~/css/website.css">
+
+</head>
+<body>
+    <!-- Navigation Bar Start -->
+    <header id="top">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white box-shadow py-2 px-2">
+            <div class="container-fluid">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item @(ViewContext.RouteData.Values["Controller"]?.ToString() == "Home" & ViewContext.RouteData.Values["Action"]?.ToString() == "Index" ? "active" : "")">
+                            <a class="nav-link" asp-controller="Home" asp-action="Index">Home</a>
+                        </li>
+                        <li class="nav-item @(ViewContext.RouteData.Values["Controller"]?.ToString() == "Blog" & ViewContext.RouteData.Values["Action"]?.ToString() == "Index" ? "active" : "")">
+                            <a class="nav-link" asp-controller="Blog" asp-action="Index">Blog</a>
+                        </li>
+                        <li class="nav-item @(ViewContext.RouteData.Values["Controller"]?.ToString() == "Home" & ViewContext.RouteData.Values["Action"]?.ToString() == "Contact" ? "active" : "")">
+                            <a class="nav-link" asp-controller="Home" asp-action="Contact">Contact Me</a>
+                        </li>
+                        <li class="nav-item @(ViewContext.RouteData.Values["Controller"]?.ToString() == "Home" & ViewContext.RouteData.Values["Action"]?.ToString() == "About" ? "active" : "")">
+                            <a class="nav-link" asp-controller="Home" asp-action="About">About Me</a>
+                        </li>
+                        <li class="nav-item @(ViewContext.RouteData.Values["Controller"]?.ToString() == "Home" & ViewContext.RouteData.Values["Action"]?.ToString() == "Donate" ? "active" : "")">
+                            <a class="nav-link" asp-controller="Home" asp-action="Donate">Donation</a>
+                        </li>
+                    </ul>
+                    <ul class="navbar-nav flex-grow-1 justify-content-end pr-5">
+                        <li class="nav-item">
+                            <form class="form-inline my-2" asp-controller="Blog" asp-action="Index" method="get">
+                                <div class="input-group w-100">
+                                    <input class="form-control" type="search" name="searchString" placeholder="Search for ..." aria-label="Search">
+                                    <div class="input-group-append">
+                                        <button class="btn btn-primary" type="submit" title="Search">
+                                            <span class="fa fa-search"></span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <!-- Navigation Bar End -->
+    @RenderBody()
+
+
+    @await Component.InvokeAsync("Footer")
+
+    <a href="#top" id="btn-go-top" class="smoothscroll">
+        <span class="fa fa-angle-up"></span>
+    </a>
+
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="~/lib/smooth-scroll.js"></script>
+    <script src="~/lib/aos/aos.js"></script>
+    <script src="~/lib/jarallax/jarallax.min.js"></script>
+    <script src="~/lib/OwlCarousel2/owl.carousel.min.js"></script>
+    <script src="~/lib/shave/jquery.shave.min.js"></script>
+    <script src="~/lib/jquery-confirm/jquery-confirm.min.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+    <script src="~/lib/jquery-ajax-unobtrusive/jquery.unobtrusive-ajax.min.js"></script>
+    <script src="~/lib/lightbox2/js/lightbox.min.js"></script>
+    <script src="~/lib/jquery.ripples/dist/jquery.ripples.min.js"></script>
+    <script src="~/lib/TypewriterJS/core.min.js"></script>
+    <script src="~/js/website.js"></script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+
+</body>
+</html>
