@@ -4,6 +4,6 @@ namespace DevLog.Core.Domain
 {
     public class Role : IdentityRole<int>
     {
-        public new string Name { get; set; } = string.Empty;
+        public override string Name { get; set; } = string.Empty;
     }
 }
