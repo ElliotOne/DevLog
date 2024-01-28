@@ -88,7 +88,7 @@ body {
             Form Start
 ==========================================*/
 
-form .form-group {
+.form-group {
     margin-bottom: 10px;
 }
 
@@ -150,7 +150,7 @@ form .form-group {
 
             .tagger > ul li > span {
                 color: #ffffff;
-                background-color: var(--primary) !important;
+                background-color: var(--bs-blue) !important;
                 border: none !important;
                 cursor: default !important
             }
