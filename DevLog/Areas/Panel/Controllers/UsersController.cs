@@ -332,7 +332,7 @@ namespace DevLog.Areas.Panel.Controllers
         }
 
         [AllowAnonymous]
-        public IActionResult Login(string returnUrl)
+        public IActionResult Login(string? returnUrl)
         {
             ViewBag.returnUrl = returnUrl;
             return View();
@@ -341,7 +341,7 @@ namespace DevLog.Areas.Panel.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Login(UserLoginFormViewModel userLoginFormViewModel, string returnUrl)
+        public async Task<IActionResult> Login(UserLoginFormViewModel userLoginFormViewModel, string? returnUrl)
         {
             ViewBag.returnUrl = returnUrl;
 
