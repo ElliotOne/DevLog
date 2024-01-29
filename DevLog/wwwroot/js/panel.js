@@ -620,6 +620,10 @@
                 console.log("Your browser does not support File API");
             }
         }
+
+        $("#btn-add-file").click(function () {
+            $("#input-file-hidden").click();
+        });
     }
 
     //===================================

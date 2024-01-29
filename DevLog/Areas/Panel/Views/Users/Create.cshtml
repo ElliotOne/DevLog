@@ -10,10 +10,6 @@
     <script>
         Panel.InitializeEditor("#txtBiography");
         Panel.InitializeSingleFilePreview();
-
-        $("#btn-add-file").click(function () {
-            $("#input-file-hidden").click();
-        });
     </script>
 }
 
@@ -26,17 +22,17 @@
     }
     <div class="form-group">
         <label asp-for="UserName"></label>
-        <input asp-for="UserName" class="form-control"/>
+        <input asp-for="UserName" class="form-control" />
         <span asp-validation-for="UserName"></span>
     </div>
     <div class="form-group">
         <label asp-for="Password"></label>
-        <input asp-for="Password" class="form-control"/>
+        <input asp-for="Password" class="form-control" />
         <span asp-validation-for="Password"></span>
     </div>
     <div class="form-group">
         <label asp-for="PasswordConfirm"></label>
-        <input asp-for="PasswordConfirm" class="form-control"/>
+        <input asp-for="PasswordConfirm" class="form-control" />
         <span asp-validation-for="PasswordConfirm"></span>
     </div>
     <div class="form-group">
@@ -49,17 +45,17 @@
     </div>
     <div class="form-group">
         <label asp-for="FirstName"></label>
-        <input asp-for="FirstName" class="form-control"/>
+        <input asp-for="FirstName" class="form-control" />
         <span asp-validation-for="FirstName"></span>
     </div>
     <div class="form-group">
         <label asp-for="LastName"></label>
-        <input asp-for="LastName" class="form-control"/>
+        <input asp-for="LastName" class="form-control" />
         <span asp-validation-for="LastName"></span>
     </div>
     <div class="form-group">
         <label asp-for="Email"></label>
-        <input asp-for="Email" class="form-control"/>
+        <input asp-for="Email" class="form-control" />
         <span asp-validation-for="Email"></span>
     </div>
     <div class="form-group">
@@ -73,7 +69,7 @@
             <i class="fa fa-plus"></i>
             Add Picture
         </button>
-        <input type="file" asp-for="File" id="input-file-hidden" class="d-none" accept="image/*"/>
+        <input type="file" asp-for="File" id="input-file-hidden" class="d-none" accept="image/*" />
         <div id="files-preview" class="single-file mt-2">
         </div>
     </div>
