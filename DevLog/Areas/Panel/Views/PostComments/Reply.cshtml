@@ -5,22 +5,15 @@
     Layout = "_FormLayout";
     ViewData["Title"] = "Reply Comment";
 }
-@section Scripts
-{
-    <script>
-        Panel.InitializeEditorReadOnly("#txtParentBody");
-        Panel.InitializeEditor("#txtBody");
-    </script>
-}
 
 <form asp-action="Reply">
     <div class="form-group">
         <label asp-for="ParentBody"></label>
-        <textarea asp-for="ParentBody" id="txtParentBody"></textarea>
+        <textarea asp-for="Body" rows="5" class="form-control" disabled="disabled"></textarea>
     </div>
     <div class="form-group">
         <label asp-for="Body"></label>
-        <textarea asp-for="Body" id="txtBody"></textarea>
+        <textarea asp-for="Body" rows="5" class="form-control"></textarea>
         <span asp-validation-for="Body"></span>
     </div>
     <div class="form-group">

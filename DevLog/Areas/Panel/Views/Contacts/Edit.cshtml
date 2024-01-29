@@ -5,13 +5,6 @@
     ViewData["Title"] = "Edit Contact";
 }
 
-@section Scripts
-{
-    <script>
-        Panel.InitializeEditor("#txtBody");
-    </script>
-}
-
 <form asp-action="Edit">
     <div class="form-group">
         <label asp-for="UserFullName"></label>
@@ -30,7 +23,7 @@
     </div>
     <div class="form-group">
         <label asp-for="Body"></label>
-        <textarea asp-for="Body" id="txtBody"></textarea>
+        <textarea asp-for="Body" rows="5" class="form-control"></textarea>
         <span asp-validation-for="Body"></span>
     </div>
 
