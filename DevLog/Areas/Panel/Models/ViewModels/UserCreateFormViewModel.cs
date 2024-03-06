@@ -36,7 +36,7 @@ namespace DevLog.Areas.Panel.Models.ViewModels
         [EmailAddress(ErrorMessage = ValidationErrorMessagesConstant.RegexMsg)]
         public string Email { get; set; } = string.Empty;
 
-        [MaxLength(1000, ErrorMessage = ValidationErrorMessagesConstant.MaxLengthMsg)]
+        [MaxLength(1024, ErrorMessage = ValidationErrorMessagesConstant.MaxLengthMsg)]
         public string? Biography { get; set; }
 
         [Display(Name = "Active")]

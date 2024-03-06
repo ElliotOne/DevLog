@@ -25,7 +25,7 @@ namespace DevLog.Data.Configurations
 
             builder
                 .Property(x => x.Biography)
-                .HasMaxLength(1000);
+                .HasMaxLength(1024);
 
             builder
                 .Property(x => x.Email)

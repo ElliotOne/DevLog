@@ -58,7 +58,7 @@ namespace DevLog.Data.Configurations
 
             builder
                 .Property(x => x.WalletAddress1)
-                .HasMaxLength(1000);
+                .HasMaxLength(1024);
 
             builder
                 .Property(x => x.WalletName2)
@@ -66,7 +66,7 @@ namespace DevLog.Data.Configurations
 
             builder
                 .Property(x => x.WalletAddress2)
-                .HasMaxLength(1000);
+                .HasMaxLength(1024);
 
             builder
                 .Property(x => x.WalletName3)
@@ -74,7 +74,7 @@ namespace DevLog.Data.Configurations
 
             builder
                 .Property(x => x.WalletAddress3)
-                .HasMaxLength(1000);
+                .HasMaxLength(1024);
 
             builder
                 .Property(x => x.WalletName4)
@@ -82,7 +82,7 @@ namespace DevLog.Data.Configurations
 
             builder
                 .Property(x => x.WalletAddress4)
-                .HasMaxLength(1000);
+                .HasMaxLength(1024);
         }
     }
 }

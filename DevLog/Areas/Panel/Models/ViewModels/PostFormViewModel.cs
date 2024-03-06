@@ -23,7 +23,7 @@ namespace DevLog.Areas.Panel.Models.ViewModels
         public DateTime LastEditDate { get; set; }
 
         [Display(Name = "Tags")]
-        [MaxLength(1000, ErrorMessage = ValidationErrorMessagesConstant.MaxLengthMsg)]
+        [MaxLength(1024, ErrorMessage = ValidationErrorMessagesConstant.MaxLengthMsg)]
         public string? Tags { get; set; }
 
         [Display(Name = "Category")]

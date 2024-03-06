@@ -25,7 +25,7 @@ namespace DevLog.Data.Configurations
 
             builder
                 .Property(x => x.Body)
-                .HasMaxLength(1000)
+                .HasMaxLength(1024)
                 .IsRequired();
 
             builder

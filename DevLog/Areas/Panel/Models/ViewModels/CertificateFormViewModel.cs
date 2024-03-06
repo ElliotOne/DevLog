@@ -13,7 +13,7 @@ namespace DevLog.Areas.Panel.Models.ViewModels
         public string Title { get; set; } = string.Empty;
 
         [Display(Name = "Link")]
-        [MaxLength(1000, ErrorMessage = ValidationErrorMessagesConstant.MaxLengthMsg)]
+        [MaxLength(1024, ErrorMessage = ValidationErrorMessagesConstant.MaxLengthMsg)]
         public string? Url { get; set; }
 
         [Display(Name = "Created On")]

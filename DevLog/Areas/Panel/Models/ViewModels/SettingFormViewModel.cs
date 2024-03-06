@@ -53,7 +53,7 @@ namespace DevLog.Areas.Panel.Models.ViewModels
         public string? WalletName1 { get; set; }
 
         [Display(Name = "Wallet 1 Address")]
-        [MaxLength(1000, ErrorMessage = ValidationErrorMessagesConstant.MaxLengthMsg)]
+        [MaxLength(1024, ErrorMessage = ValidationErrorMessagesConstant.MaxLengthMsg)]
         public string? WalletAddress1 { get; set; }
 
         [Display(Name = "Wallet 2 Name")]
@@ -61,7 +61,7 @@ namespace DevLog.Areas.Panel.Models.ViewModels
         public string? WalletName2 { get; set; }
 
         [Display(Name = "Wallet 2 Address")]
-        [MaxLength(1000, ErrorMessage = ValidationErrorMessagesConstant.MaxLengthMsg)]
+        [MaxLength(1024, ErrorMessage = ValidationErrorMessagesConstant.MaxLengthMsg)]
         public string? WalletAddress2 { get; set; }
 
         [Display(Name = "Wallet 3 Name")]
@@ -69,7 +69,7 @@ namespace DevLog.Areas.Panel.Models.ViewModels
         public string? WalletName3 { get; set; }
 
         [Display(Name = "Wallet 3 Address")]
-        [MaxLength(1000, ErrorMessage = ValidationErrorMessagesConstant.MaxLengthMsg)]
+        [MaxLength(1024, ErrorMessage = ValidationErrorMessagesConstant.MaxLengthMsg)]
         public string? WalletAddress3 { get; set; }
 
         [Display(Name = "Wallet 4 Name")]
@@ -77,7 +77,7 @@ namespace DevLog.Areas.Panel.Models.ViewModels
         public string? WalletName4 { get; set; }
 
         [Display(Name = "Wallet 4 Address")]
-        [MaxLength(1000, ErrorMessage = ValidationErrorMessagesConstant.MaxLengthMsg)]
+        [MaxLength(1024, ErrorMessage = ValidationErrorMessagesConstant.MaxLengthMsg)]
         public string? WalletAddress4 { get; set; }
     }
 }

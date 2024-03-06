@@ -16,7 +16,7 @@ namespace DevLog.Models.ViewModels
 
         [Display(Name = "Comment")]
         [Required(ErrorMessage = ValidationErrorMessagesConstant.RequiredMsg)]
-        [MaxLength(1000, ErrorMessage = ValidationErrorMessagesConstant.MaxLengthMsg)]
+        [MaxLength(1024, ErrorMessage = ValidationErrorMessagesConstant.MaxLengthMsg)]
         public string Body { get; set; } = string.Empty;
 
         [Display(Name = "Email")]

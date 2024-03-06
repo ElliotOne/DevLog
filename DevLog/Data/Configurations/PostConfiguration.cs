@@ -19,7 +19,7 @@ namespace DevLog.Data.Configurations
 
             builder
                 .Property(x => x.Tags)
-                .HasMaxLength(1000);
+                .HasMaxLength(1024);
         }
     }
 }
