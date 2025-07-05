@@ -19,18 +19,15 @@ namespace DevLog.Areas.Panel.Controllers
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
         private readonly IFileHandler _fileHandler;
-        private readonly IWebHostEnvironment _webHostEnvironment;
 
         public CertificatesController(
             IUnitOfWork unitOfWork,
             IMapper mapper,
-            IFileHandler fileHandler,
-            IWebHostEnvironment webHostEnvironment)
+            IFileHandler fileHandler)
         {
             _unitOfWork = unitOfWork;
             _mapper = mapper;
             _fileHandler = fileHandler;
-            _webHostEnvironment = webHostEnvironment;
         }
 
         public IActionResult Index()

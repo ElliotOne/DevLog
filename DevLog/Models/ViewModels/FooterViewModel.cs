@@ -12,7 +12,6 @@
         public string? FaceBook { get; set; }
         public string? LinkedIn { get; set; }
         public string? Youtube { get; set; }
-        public string? Aparat { get; set; }
         public string? GitHub { get; set; }
 
         public IEnumerable<string> PostTags { get; set; } = new List<string>();

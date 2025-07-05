@@ -20,6 +20,11 @@ textarea {
     resize: none;
 }
 
+input[type="password"] {
+    border-top-right-radius: 0.25rem !important;
+    border-bottom-right-radius: 0.25rem !important;
+}
+
 @font-face {
     font-family: 'Work Sans', sans-serif;
     font-weight: 500;

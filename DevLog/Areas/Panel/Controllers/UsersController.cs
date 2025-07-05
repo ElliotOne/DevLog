@@ -21,21 +21,17 @@ namespace DevLog.Areas.Panel.Controllers
         private readonly IMapper _mapper;
         private readonly IEmailSender _emailSender;
         private readonly IFileHandler _fileHandler;
-        private readonly IWebHostEnvironment _webHostEnvironment;
 
         public UsersController(
             IUnitOfWork unitOfWork,
             IMapper mapper,
             IEmailSender emailSender,
-            IFileHandler fileHandler,
-            IWebHostEnvironment webHostEnvironment
-            )
+            IFileHandler fileHandler)
         {
             _unitOfWork = unitOfWork;
             _mapper = mapper;
             _emailSender = emailSender;
             _fileHandler = fileHandler;
-            _webHostEnvironment = webHostEnvironment;
         }
 
         [Authorize(Roles = UserRolesConstant.SuperAdmin)]

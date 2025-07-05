@@ -6,7 +6,7 @@
     public static class DateTimeUtility
     {
         /// <summary>
-        /// Convert a datetime to a user friendly representation; HH:mm:ss yyyy/MM/dd
+        /// Convert a datetime to a user-friendly representation; HH:mm:ss yyyy/MM/dd
         /// </summary>
         /// <param name="dateTime">DateTime</param>
         /// <returns>DateTime in HH:mm:ss yyyy/MM/dd format</returns>

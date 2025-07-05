@@ -49,6 +49,9 @@ builder.Services.AddElmah<XmlFileErrorLog>(options =>
     options.LogPath = "~/logs";
 });
 
+builder.Services.Configure<EmailSenderOptions>(options =>
+    configuration.GetSection("EmailService").Bind(options));
+
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
@@ -110,18 +113,16 @@ app.UseRouting();
 app.UseAuthentication();
 app.UseAuthorization();
 
-app.UseEndpoints(endpoints =>
-{
-    endpoints.MapAreaControllerRoute(
+app.MapAreaControllerRoute(
         areaName: "Panel",
         name: "panel",
         pattern: "/panel/{controller=Home}/{action=Index}/{id?}"
     );
 
-    endpoints.MapControllerRoute(
+app.MapControllerRoute(
         name: "default",
-        pattern: "{controller=Home}/{action=Index}/{id?}");
-});
+        pattern: "{controller=Home}/{action=Index}/{id?}"
+    );
 
 //Ensure Database Creation
 using var serviceScope = app.Services.GetService<IServiceScopeFactory>()?.CreateScope();
