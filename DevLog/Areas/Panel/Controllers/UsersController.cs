@@ -238,16 +238,16 @@ namespace DevLog.Areas.Panel.Controllers
                 return BadRequest();
             }
 
+            if (!ModelState.IsValid)
+            {
+                return View(userFormViewModel);
+            }
+
             var user = await _unitOfWork.UserRepository.GetById(userFormViewModel.Id);
 
             if (user == null)
             {
                 return NotFound();
-            }
-
-            if (!ModelState.IsValid)
-            {
-                return View(userFormViewModel);
             }
 
             var currentUser = (await _unitOfWork.UserRepository.GetByClaimsPrincipal(HttpContext.User))!;
@@ -396,7 +396,7 @@ namespace DevLog.Areas.Panel.Controllers
         [AllowAnonymous]
         public async Task<IActionResult> ForgotPassword(UserForgotPasswordFormViewModel userForgotPasswordFormViewModel)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
                 return View(userForgotPasswordFormViewModel);
             }
