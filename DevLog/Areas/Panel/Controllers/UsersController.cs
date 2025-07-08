@@ -154,18 +154,17 @@ namespace DevLog.Areas.Panel.Controllers
 
             var user = _mapper.Map<UserCreateFormViewModel, User>(userCreateFormViewModel);
 
-            var files = HttpContext.Request.Form.Files;
-
-            if (files.Any())
+            var file = userCreateFormViewModel.File;
+            if (file != null && file.Length > 0)
             {
                 user.ImageVirtualPath =
                     _fileHandler.GetRelativePath(
-                        files[0].FileName,
+                        file.FileName,
                         GuidUtility.NewGuidSafeString(),
                         FileType.Profile);
 
                 await _fileHandler.Upload(
-                    files[0],
+                    file,
                     user.ImageVirtualPath);
             }
 
@@ -269,9 +268,8 @@ namespace DevLog.Areas.Panel.Controllers
                 user.IsActive = userFormViewModel.IsActive;
             }
 
-            var files = HttpContext.Request.Form.Files;
-
-            if (files.Any())
+            var file = userFormViewModel.File;
+            if (file != null && file.Length > 0)
             {
                 //Delete the old file
                 if (!string.IsNullOrWhiteSpace(user.ImageVirtualPath))
@@ -282,12 +280,12 @@ namespace DevLog.Areas.Panel.Controllers
                 //Upload the new file
                 user.ImageVirtualPath =
                     _fileHandler.GetRelativePath(
-                        files[0].FileName,
+                        file.FileName,
                         GuidUtility.NewGuidSafeString(),
                         FileType.Profile);
 
                 await _fileHandler.Upload(
-                files[0],
+                file,
                 user.ImageVirtualPath);
             }
 

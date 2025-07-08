@@ -161,23 +161,25 @@ namespace DevLog.Areas.Panel.Controllers
 
             var post = _mapper.Map<PostFormViewModel, Post>(postFormViewModel);
 
-            var user = (await _unitOfWork.UserRepository.GetByClaimsPrincipal(HttpContext.User))!;
+            var user = await _unitOfWork.UserRepository.GetByClaimsPrincipal(HttpContext.User);
+            if (user == null)
+            {
+                ModelState.AddModelError(string.Empty, "User not found.");
+                ViewData[nameof(PostFormViewModel.PostCategoryId)] = GetPostCategories();
+                return View(postFormViewModel);
+            }
 
             post.UserId = user.Id;
 
-            var files = HttpContext.Request.Form.Files;
-
-            if (files.Any())
+            var file = postFormViewModel.File;
+            if (file != null && file.Length > 0)
             {
-                post.ImageVirtualPath =
-                    _fileHandler.GetRelativePath(
-                        files[0].FileName,
-                        GuidUtility.NewGuidSafeString(),
-                        FileType.Post);
+                post.ImageVirtualPath = _fileHandler.GetRelativePath(
+                    file.FileName,
+                    GuidUtility.NewGuidSafeString(),
+                    FileType.Post);
 
-                await _fileHandler.Upload(
-                    files[0],
-                    post.ImageVirtualPath);
+                await _fileHandler.Upload(file, post.ImageVirtualPath);
             }
 
             _unitOfWork.PostRepository.Insert(post);
@@ -232,9 +234,8 @@ namespace DevLog.Areas.Panel.Controllers
 
             var post = _mapper.Map<PostFormViewModel, Post>(postFormViewModel);
 
-            var files = HttpContext.Request.Form.Files;
-
-            if (files.Any())
+            var file = postFormViewModel.File;
+            if (file != null && file.Length > 0)
             {
                 //Delete the old file
                 if (!string.IsNullOrWhiteSpace(post.ImageVirtualPath))
@@ -245,12 +246,12 @@ namespace DevLog.Areas.Panel.Controllers
                 //Upload the new file
                 post.ImageVirtualPath =
                     _fileHandler.GetRelativePath(
-                        files[0].FileName,
+                        file.FileName,
                         GuidUtility.NewGuidSafeString(),
                         FileType.Post);
 
                 await _fileHandler.Upload(
-                    files[0],
+                    file,
                     post.ImageVirtualPath);
             }
 
