@@ -105,4 +105,4 @@ Here are some screenshots of DevLog:
    <img src="screenshots/panel-categories.png"/>
 
 7. **Progress Bars Management - Admin Panel**<br/>
-   <img src="screenshots/panel-progressbars.png"/>
+   <img src="screenshots/panel-progresses.png"/>
