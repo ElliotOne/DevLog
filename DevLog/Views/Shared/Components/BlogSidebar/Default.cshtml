@@ -36,7 +36,7 @@
                         {
                             <a asp-controller="Blog" asp-action="Post" asp-route-id="@post.Id" class="latest-post-card">
                                 <div class="latest-post-card-left">
-                                    <img src="@post.FilePath" alt="@post.Title">
+                                    <img src="@post.ImageVirtualPath" alt="@post.Title">
                                 </div>
                                 <div class="latest-post-card-right">
                                     <span>@post.Title</span>

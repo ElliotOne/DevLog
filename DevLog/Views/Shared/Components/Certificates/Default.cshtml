@@ -14,13 +14,13 @@
                 {
                     <div class="col-lg-3 col-md-4 col-sm-6 col-12">
                         <div class="certificate-card">
-                            <img src="@certificate.FilePath" alt="" class="img-fluid" />
+                            <img src="@certificate.ImageVirtualPath" alt="" class="img-fluid" />
                             <div class="overlay">
                                 <div class="inner">
                                     <p class="title">
                                         @certificate.Title
                                     </p>
-                                    <a href="@certificate.FilePath" class="link" data-lightbox="certificate-@certificate.Title" data-title="@certificate.Title">
+                                    <a href="@certificate.ImageVirtualPath" class="link" data-lightbox="certificate-@certificate.Title" data-title="@certificate.Title">
                                         <span class="fa fa-eye"></span>
                                     </a>
                                     @if (!string.IsNullOrWhiteSpace(certificate.Url))

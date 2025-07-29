@@ -15,7 +15,7 @@ namespace DevLog.Models.ViewModels
         public string UserBiography { get; set; } = string.Empty;
         public Guid FilesPathGuid { get; set; }
         public bool IsCommentsOn { get; set; }
-        public string FilePath { get; set; } = string.Empty;
+        public string ImageVirtualPath { get; set; } = string.Empty;
         public PostCategoryViewModel PostCategoryViewModel { get; set; } = new PostCategoryViewModel();
         public PostCommentFormViewModel PostCommentFormViewModel { get; set; } = new PostCommentFormViewModel();
         public IEnumerable<PostCommentViewModel> PostCommentViewModels { get; set; } = new List<PostCommentViewModel>();
