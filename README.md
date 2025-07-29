@@ -89,15 +89,15 @@ Here are some screenshots of DevLog:
 1. **Database Diagram**<br/>
    <img src="screenshots/db-diagram.png"/>
 
-2. **About Page - Frontend**<br/>
-  <img src="screenshots/front-about.png"/>
+2. **Home Page - Frontend**<br/>
+   <img src="screenshots/front-home.png"/>
 
 3. **Blog Page - Frontend**<br/>
    <img src="screenshots/front-blog.png"/>
 
-4. **Home Page - Frontend**<br/>
-   <img src="screenshots/front-home.png"/>
-   
+4. **About Page - Frontend**<br/>
+   <img src="screenshots/front-about.png"/>   
+
 5. **Dashboard - Admin Panel**<br/>
    <img src="screenshots/panel-dashboard.png"/>
 
